@@ -1,12 +1,14 @@
 <template>
-    <div class="flex min-h-screen ease-in-out duration-500 px-8" :class="{' w-80': isOpen, 'w-36': !isOpen}">
+    <div class="flex min-h-screen ease-in-out duration-500 px-8 hidden md:flex" :class="{' w-80': isOpen, 'w-36': !isOpen}">
       
         
-        <div class="flex flex-col justify-between ease-in-out duration-500 relative" :class="{'desktop-nav-opened': isOpen, 'desktop-nav-closed': !isOpen}">
-            <button @click="isOpen = !isOpen" type="button" class="order-2 px-8 bottom-24 absolute ease-in-out duration-500" :class="{'rotatee-180': !isOpen}">
-                <!-- <Bars3Icon class="h-9 w-9"></Bars3Icon> -->
-                <ChevronDoubleRightIcon class="h-7 w-7"/>
-            </button>
+        <div class="flex flex-col flex-shrink-0 justify-between ease-in-out duration-500">
+            <div class="order-2 py-24">
+                <button @click="isOpen = !isOpen" type="button" class="order-2 px-8 ease-in-out duration-500 text-lightgray hover:text-gray" :class="{'rotatee-180': !isOpen}">
+                    <!-- <Bars3Icon class="h-9 w-9"></Bars3Icon> -->
+                    <ChevronDoubleRightIcon class="h-7 w-7"/>
+                </button>
+            </div>
             <div>
                 <div class="py-8 px-8 p-6">
                        <img class="w-18" src="../assets/logo.svg" alt="academy-logo.svg" >
@@ -48,18 +50,18 @@ import { onActivated, onMounted, onUpdated, ref, watch } from 'vue';
             window.removeEventListener("resize", this.reSizer);
             },
             methods: {
-            reSizer() {
-                this.width=window.innerWidth;
-                console.log(this.isOpen);
+            // reSizer() {
+            //     this.width=window.innerWidth;
+            //     console.log(this.isOpen);
 
-                if (this.width < '1186') {
-                    console.log(this.width)
-                    this.isOpen = false
-                } 
-                // else {
-                //     this.isOpen = true
-                // }
-            }
+            //     if (this.width < '1186') {
+            //         console.log(this.width)
+            //         this.isOpen = false
+            //     } 
+            //     // else {
+            //     //     this.isOpen = true
+            //     // }
+            // }
             },
         setup() {
             const navItems = [
@@ -92,8 +94,8 @@ import { onActivated, onMounted, onUpdated, ref, watch } from 'vue';
         opacity: 0;
     } */
     .rotatee-180 {
-  transform: rotate(180deg);
-  transition: 0.2s linear;
+        transform: rotate(180deg);
+        transition: 0.2s linear;
 }
 
     .isClose {
